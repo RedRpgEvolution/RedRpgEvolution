@@ -1,0 +1,129 @@
+/* ========================= */
+/* INVENTARIO: ESTILO PIXEL  */
+/* ========================= */
+
+/* Contenedor principal del inventario */
+#ventana-inventario {
+  position: fixed; /* Ventana flotante */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 600px;
+  background-color: #2b1d1a; /* Fondo oscuro */
+  border: 4px solid #cf9a32; /* Borde dorado pixelado */
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 100;
+  box-shadow: 0 0 20px #000;
+}
+
+/* Título estilo pixel */
+#ventana-inventario h2 {
+  font-family: 'Skranji', cursive; /* Fuente estilo aventura */
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+
+/* Inventario estilo pixel RPG */
+
+.grid-inventario {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  gap: 12px; /* Espacio entre celdas */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo sutil */
+  border-radius: 10px;
+}
+
+/* Estilo base para cada slot */
+.item-inventario {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #cf9a32; /* Borde dorado */
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen dentro del slot */
+.item-inventario img {
+  width: 45px;
+  height: 30px;
+  image-rendering: pixelated;
+}
+
+/* Cantidad del objeto en esquina */
+.item-cantidad {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 12px;
+  background-color: #000;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Slots bloqueados con candado */
+.item-inventario.bloqueado {
+  background-color: #222;
+  border: 2px solid #691a1a;
+  opacity: 0.6;
+}
+
+.item-inventario.bloqueado img {
+  opacity: 0.8;
+  filter: grayscale(1);
+}
+
+/* =============================== */
+/* BOTÓN DE CIERRE DEL INVENTARIO */
+/* =============================== */
+.btn-cerrar-inv {
+  background-color: #691a1a;         /* Rojo oscuro (de tu paleta) */
+  color: white;                      /* Texto blanco */
+  border: 2px solid #cf9a32;         /* Borde dorado */
+  padding: 8px 16px;                 /* Tamaño cómodo */
+  font-size: 16px;                   /* Tamaño del texto */
+  font-family: 'Skranji', cursive;  /* Fuente retro */
+  font-weight: bold;                /* Negrita */
+  border-radius: 8px;               /* Bordes suaves */
+  cursor: pointer;                  /* Manita al pasar */
+  margin-top: 10px;                 /* Espacio desde los ítems */
+  transition: background-color 0.3s ease;
+}
+
+.btn-cerrar-inv:hover {
+  background-color: #923a20;        /* Tono más claro al pasar el mouse */
+}
+
+/* ===================================== */
+/* BOTÓN CIERRE FLOTANTE INVENTARIO      */
+/* ===================================== */
+.btn-cerrar-inv {
+  position: absolute;              /* Posicionamiento flotante */
+  top: 10px;                       /* Distancia desde arriba */
+  right: 10px;                     /* Distancia desde la derecha */
+  background-color: #691a1a;       /* Rojo oscuro */
+  color: white;                    /* Texto blanco */
+  border: 2px solid #cf9a32;       /* Borde dorado */
+  padding: 6px 12px;               /* Tamaño compacto */
+  font-size: 16px;                 /* Tamaño del texto */
+  font-family: 'Skranji', cursive;/* Estilo retro */
+  border-radius: 6px;              /* Bordes suaves */
+  cursor: pointer;                /* Manita al pasar */
+  z-index: 10;                    /* Encima de todo dentro del inventario */
+  transition: background-color 0.3s ease;
+}
+
+.btn-cerrar-inv:hover {
+  background-color: #923a20;       /* Tono más claro al pasar el mouse */
+}

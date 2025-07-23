@@ -1,7 +1,6 @@
 /* ==================================== */
 /* ESTILOS GLOBALES Y CONFIGURACIÓN BASE */
 /* ==================================== */
-
 html, body {
   margin: 0; /* Quitamos márgenes por defecto */
   padding: 0; /* Quitamos padding por defecto */
@@ -14,7 +13,6 @@ html, body {
 /* ===================================== */
 /* Declaracion de Fuentes Custom*/
 /* ===================================== */
-
 .skranji-regular {
   font-family: "Skranji", system-ui;
   font-weight: 400;
@@ -27,10 +25,47 @@ html, body {
   font-style: normal;
 }
 
+/* ============================== */
+/* BARRA DE EXPERIENCIA (XP)     */
+/* ============================== */
+
+#barra-xp {
+  position: fixed;             /* Siempre arriba */
+  top: 0; left: 0;
+  width: 100vw;                /* Ocupa todo el ancho de la pantalla */
+  height: 24px;                /* Altura estilo pixel */
+  background-color: #1a1a1a;   /* Fondo oscuro tipo barra */
+  border-bottom: 3px solid #282658; /* Línea pixel art */
+  z-index: 999;
+  font-family: monospace;     /* Estilo retro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  text-shadow: 1px 1px #000;
+  overflow: hidden;
+}
+
+#xp-relleno {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #cf9a32, #923a20); /* Color oro a rojo */
+  transition: width 0.5s ease;
+}
+
+#xp-texto {
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+}
+
+
 /* ======================================== */
 /* CLASE REUTILIZABLE PARA OCULTAR VENTANAS */
 /* ======================================== */
-
 .ventana-oculta {
   display: none !important;   /* 🔥 Oculta el elemento de forma total, sobrescribiendo cualquier estilo */
   opacity: 0;                 /* 🔁 También lo hace invisible visualmente si hubiera animaciones */
@@ -49,9 +84,6 @@ html, body {
   background-attachment: fixed;       /* Fijo mientras se hace scroll */
 }
 
-
-
-
 /* ===================== */
 /* Fondo exclusivo para LOGIN */
 /* ===================== */
@@ -64,68 +96,106 @@ html, body {
 }
 
 /* ===================== */
-/* Fondo exclusivo para INDEX */
+/* Fondo exclusivo para INDEX con diseño responsivo */
 /* ===================== */
 .pagina-index {
-  background-image: url('../imagenes/fondo_bosque.png'); /* Fondo específico */
-  background-size: cover;             /* Cubre toda la pantalla */
-  background-position: center;        /* Centrado */
-  background-repeat: no-repeat;       /* Sin repetición */
-  background-attachment: fixed;       /* Fijo mientras se hace scroll */
+  background-image: url('../imagenes/fondo_bosque.png'); /* Usamos imagen local */
+  background-size: cover;             /* La imagen se adapta sin deformarse */
+  background-position: center center; /* Centrado tanto horizontal como vertical */
+  background-repeat: no-repeat;       /* No se repite la imagen */
+  background-attachment: fixed;       /* Fija la imagen al hacer scroll */
+  width: 100vw;                       /* Ocupa todo el ancho de la ventana */
+  height: 100vh;                      /* Ocupa toda la altura de la ventana */
+  display: flex;                      /* Permite centrar contenido con Flexbox */
+  justify-content: center;           /* Centrado horizontal */
+  align-items: center;               /* Centrado vertical */
+  flex-direction: column;            /* Alineación vertical de hijos */
+  text-align: center;                /* Centra el texto si hay elementos */
+  padding: 2rem;                     /* Espaciado interno para pantallas pequeñas */
+  box-sizing: border-box;            /* Incluye padding en el ancho */
+}
+
+/* ===================== */
+/* Media query para pantallas pequeñas */
+/* ===================== */
+@media (max-width: 600px) {
+  .pagina-index {
+    padding: 1rem;                    /* Menos padding en móviles */
+    background-position: center top; /* Ajustamos la posición para móviles */
+  }
 }
 
 /* ========================================= */
-/* BARRA SUPERIOR INDEX  */
+/* BARRA SUPERIOR INDEX CON RESPONSIVE FIXED */
 /* ========================================= */
-
 .barra-superior {
-    background-size: cover;        /* Escalamos para cubrir toda la barra */
-  background-position: center;   /* Centramos la imagen */
-  height: 60px;                  /* Altura de la barra */
-  width: 100%;                   /* Ocupa todo el ancho */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra inferior para dar relieve */
+  position: fixed;                     /* 🔒 Fija la barra en la parte superior */
+  top: 0;                              /* 📌 Pegada arriba */
+  left: 0;                             /* 📌 Pegada a la izquierda */
+  width: 100%;                         /* 🧱 Ocupar todo el ancho */
+  height: 10vh;                        /* 📐 Altura relativa a la pantalla */
+  min-height: 60px;                    /* 🚫 No permitir que sea muy baja */
+  background-size: cover;             /* 🖼️ Escala imagen si se usa fondo */
+  background-position: center;        /* 🎯 Centrado horizontal de fondo */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 🌫️ Sombra inferior */
+  display: flex;                      /* ➖ Flex para alinear elementos */
+  justify-content: center;           /* 🎯 Centrado horizontal del contenido */
+  align-items: center;               /* ⬆️⬇️ Centrado vertical dentro de la barra */
+  z-index: 999;                       /* 🔝 Encima de todo */
+  padding: 0 5vw;                     /* 🧱 Espacio interno adaptable */
 }
 
-/* Contenedor interno para alinear elementos */
+/* Contenedor interior que organiza logo y botón */
 .contenedor-barra {
-  max-width: 1200px;      /* Ancho máximo del contenido */
-  margin: 0 auto;         /* Centrado horizontal */
-  height: 100%;           /* Igual que la barra */
-  display: flex;          /* Activamos flexbox */
-  align-items: center;    /* Centrado vertical */
-  justify-content: space-between; /* Logo a la izquierda, botón a la derecha */
-  padding: 0 20px;        /* Espacio interno a los lados */
+  width: 100%;                         /* 🔁 Ancho total del header */
+  max-width: 1000px;                   /* 📏 Ancho máximo controlado */
+  display: flex;                       /* 🔧 Flexbox para distribución */
+  justify-content: space-between;     /* ↔️ Logo a la izquierda, botón a la derecha */
+  align-items: center;                /* 🔝 Centrado vertical */
 }
 
 /* Estilo del logo */
 .logo {
-  font-size: 20px;
+  font-size: 2vw;                      /* 🔠 Escalado con la pantalla */
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 2px black;
 }
 
-/* Botón de inicio de sesión */
+/* Botón "Iniciar sesión" */
 .btn-login {
-  background-color: transparent; /* Fondo transparente */
-  color: white;                  /* Texto blanco */
-  border: 2px solid white;       /* Borde blanco */
-  padding: 8px 16px;
-  border-radius: 6px;
+  background-color: transparent;      /* 🔲 Fondo transparente */
+  color: white;                       /* 🔤 Texto blanco */
+  border: 2px solid white;            /* ▫️ Borde blanco visible */
+  padding: 0.6em 1.2em;               /* 🧱 Espaciado interior */
+  border-radius: 6px;                 /* ◼️ Bordes redondeados */
   font-weight: bold;
+  font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn-login:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Fondo suave al pasar */
+  background-color: rgba(255, 255, 255, 0.2); /* 🎨 Fondo al pasar el mouse */
 }
 
+/* ============================= */
+/* AJUSTES RESPONSIVE MÓVILES   */
+/* ============================= */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 5vw;                   /* 🔠 Tamaño adaptable en móviles */
+  }
+
+  .btn-login {
+    font-size: 0.9em;                 /* 🔡 Letra más pequeña */
+    padding: 6px 12px;                /* 🔳 Espaciado reducido */
+  }
+}
 
 /* ===================================== */
 /* CONTENEDOR DEL JUEGO */
 /* ===================================== */
-
 #juego {
   width: 100vw; /* 100% ancho pantalla */
   height: 100vh; /* 100% alto pantalla */
@@ -133,11 +203,10 @@ html, body {
   overflow: hidden; /* No scroll interno */
 }
 
-
 /* HUD lateral */
 #hud-lateral {
   position: absolute;
-  top: 2vh;
+  top: 5vh;
   left: 2vw;
   width: 20vw;
   padding: 2vh;
@@ -160,7 +229,6 @@ html, body {
 /* ============================== */
 /* BARRAS DE VIDA, ENERGÍA, AGUA */
 /* ============================== */
-
 .barra {
   margin-bottom: 1vh;
 }
@@ -170,6 +238,17 @@ html, body {
   font-weight: bold;
   margin-bottom: 0.5vh;
 }
+
+/* Texto con valor numérico encima de cada barra (vida, energía, agua) */
+.barra-texto {
+  font-size: 14px;           /* Tamaño adecuado */
+  font-weight: bold;         /* Resalta el número */
+  color: white;              /* Texto blanco */
+  text-shadow: 1px 1px 2px black; /* Sombra para legibilidad */
+  margin-bottom: 4px;        /* Separación con la barra */
+  display: inline-block;     /* En línea con espaciado */
+}
+
 
 .progreso {
   background-color: #A69F8C;
@@ -190,13 +269,11 @@ html, body {
 /* ===================================== */
 /* BOTONES INFERIORES DEL HUD            */
 /* ===================================== */
-
 #barra-inferior {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #3E2C24DD;
   padding: 1vh 0;
   display: flex;
   justify-content: center;
@@ -224,7 +301,7 @@ html, body {
 /* MAPA / INVENTARIO / ZONAS             */
 /* ===================================== */
 
-#ventana-mapa, #ventana-inventario, #zona-bosque, #zona-hogar {
+#ventana-mapa, #zona-bosque, #zona-hogar {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -281,7 +358,7 @@ html, body {
 /* Imágenes dentro de zonas */
 .imagen-mapa, .img-mapa {
   width: 100%;
-  height: 25vh;
+  height: 45vh;
   background-color: #6D7F4D33;
   display: flex;
   justify-content: center;
