@@ -11,11 +11,6 @@ html, body {
   height: 100vh; /* Altura 100% pantalla */
 }
 
-/* Ocultamos elementos por defecto */
-.ventana-oculta {
-  display: none !important; /* Ocultamos a la fuerza */
-}
-
 /* ===================================== */
 /* Declaracion de Fuentes Custom*/
 /* ===================================== */
@@ -32,88 +27,100 @@ html, body {
   font-style: normal;
 }
 
-/* ===================================== */
-/* LOGIN Y REGISTRO*/
-/* ===================================== */
-.titulo-estilo{
-  font-family: "Skranji", system-ui;
-  font-weight: 400;
-  font-style: normal;
+/* ======================================== */
+/* CLASE REUTILIZABLE PARA OCULTAR VENTANAS */
+/* ======================================== */
+
+.ventana-oculta {
+  display: none !important;   /* 🔥 Oculta el elemento de forma total, sobrescribiendo cualquier estilo */
+  opacity: 0;                 /* 🔁 También lo hace invisible visualmente si hubiera animaciones */
+  pointer-events: none;      /* 🚫 Desactiva clics e interacciones en el área */
+  visibility: hidden;        /* 👁️ Lo hace invisible para el navegador */
 }
 
-.btn-registro{
-  background: #CF9A32;
-  width: 40%;
-  height: 6%;
+/* ===================== */
+/* Fondo exclusivo para JUEGO */
+/* ===================== */
+.pagina-juego {
+  background-image: url('../imagenes/fondo_bosque2.png'); /* Fondo específico */
+  background-size: cover;             /* Cubre toda la pantalla */
+  background-position: center;        /* Centrado */
+  background-repeat: no-repeat;       /* Sin repetición */
+  background-attachment: fixed;       /* Fijo mientras se hace scroll */
+}
+
+
+
+
+/* ===================== */
+/* Fondo exclusivo para LOGIN */
+/* ===================== */
+.pagina-login {
+  background-image: url('../imagenes/fondo_pagina_principal.png'); /* Fondo específico */
+  background-size: cover;             /* Cubre toda la pantalla */
+  background-position: center;        /* Centrado */
+  background-repeat: no-repeat;       /* Sin repetición */
+  background-attachment: fixed;       /* Fijo mientras se hace scroll */
+}
+
+/* ===================== */
+/* Fondo exclusivo para INDEX */
+/* ===================== */
+.pagina-index {
+  background-image: url('../imagenes/fondo_bosque.png'); /* Fondo específico */
+  background-size: cover;             /* Cubre toda la pantalla */
+  background-position: center;        /* Centrado */
+  background-repeat: no-repeat;       /* Sin repetición */
+  background-attachment: fixed;       /* Fijo mientras se hace scroll */
+}
+
+/* ========================================= */
+/* BARRA SUPERIOR INDEX  */
+/* ========================================= */
+
+.barra-superior {
+    background-size: cover;        /* Escalamos para cubrir toda la barra */
+  background-position: center;   /* Centramos la imagen */
+  height: 60px;                  /* Altura de la barra */
+  width: 100%;                   /* Ocupa todo el ancho */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra inferior para dar relieve */
+}
+
+/* Contenedor interno para alinear elementos */
+.contenedor-barra {
+  max-width: 1200px;      /* Ancho máximo del contenido */
+  margin: 0 auto;         /* Centrado horizontal */
+  height: 100%;           /* Igual que la barra */
+  display: flex;          /* Activamos flexbox */
+  align-items: center;    /* Centrado vertical */
+  justify-content: space-between; /* Logo a la izquierda, botón a la derecha */
+  padding: 0 20px;        /* Espacio interno a los lados */
+}
+
+/* Estilo del logo */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
   color: white;
-  font-family: "Skranji", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 100%;
-  box-shadow: 5px 5px 1px #282658;
-  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px black;
 }
 
-.btn-registro:hover{
-  background: #216952;
-  box-shadow: 5px 5px 1px #691a1a;
-}
-
-/* ===================================== */
-/* LOGIN Y REGISTRO (pantalla completa) */
-/* ===================================== */
-
-#pantalla-login, #registro-usuario {
-  position: fixed; /* Ocupa toda la pantalla */
-  top: 0; left: 0;
-  width: 100vw; height: 100vh; /* 100% del viewport */
-  display: flex; /* Centramos contenido */
-  flex-direction: column; /* En columna */
-  justify-content: center;
-  align-items: center;
-  color: white; /* Texto blanco */
-  text-shadow: 1px 1px 4px black; /* Sombra de texto */
-  background-image: url('../imagenes/fondo pagina principal.png'); /* Fondo decorativo */
-  background-size: cover; /* Que cubra todo */
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 999; /* Al frente */
-}
-
-/* Título principal */
-#pantalla-login h1, #registro-usuario h2 {
-  font-size: 4vw; /* Tamaño relativo */
-  margin-bottom: 2vh; /* Separación inferior */
-}
-
-/* Formulario */
-#form-registro {
-  display: flex;
-  flex-direction: column;
-  gap: 1vh; /* Espacio entre campos */
-  width: 80%; /* Ancho relativo */
-  max-width: 400px; /* Máximo ancho */
-}
-
-/* Inputs */
-#form-registro input {
-  padding: 1vh;
-  border-radius: 0.5vw;
-  border: none;
-  font-size: 2.2vw;
-}
-
-/* Botón de enviar */
-#form-registro button {
-  padding: 1.5vh;
-  border: none;
-  border-radius: 0.5vw;
-  background-color: #6D7F4D;
-  color: white;
+/* Botón de inicio de sesión */
+.btn-login {
+  background-color: transparent; /* Fondo transparente */
+  color: white;                  /* Texto blanco */
+  border: 2px solid white;       /* Borde blanco */
+  padding: 8px 16px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 2vw;
+  transition: background-color 0.3s ease;
 }
+
+.btn-login:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo suave al pasar */
+}
+
 
 /* ===================================== */
 /* CONTENEDOR DEL JUEGO */
@@ -126,18 +133,6 @@ html, body {
   overflow: hidden; /* No scroll interno */
 }
 
-/* Fondo texturizado */
-.fondo-supervivencia {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background:
-    radial-gradient(#6D7F4D22 10%, transparent 11%) 0 0,
-    radial-gradient(#4E342E33 10%, transparent 11%) 8px 8px,
-    linear-gradient(90deg, #4E342E 20%, #6D7F4D 80%);
-  background-size: 16px 16px, 16px 16px, 100% 100%;
-  box-shadow: inset 0 0 5vh #00000055;
-}
 
 /* HUD lateral */
 #hud-lateral {

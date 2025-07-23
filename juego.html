@@ -1,0 +1,124 @@
+<!-- Declaramos el tipo de documento HTML -->
+<!DOCTYPE html>
+<!-- Iniciamos el documento HTML y definimos el idioma -->
+<html lang="es">
+
+<!-- Sección de cabecera, donde van los metadatos -->
+<head>
+  <!-- Codificación de caracteres (necesario para que se muestren tildes, ñ, etc.) -->
+  <meta charset="UTF-8">
+
+  <!-- Permite que el sitio sea responsivo en celulares y tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título de la pestaña del navegador -->
+  <title>Juego de Supervivencia</title>
+
+  <!-- Enlace al archivo de estilos CSS -->
+  <link rel="stylesheet" href="estilo/estilo.css">
+</head>
+
+<!-- Cuerpo de la página, donde se mostrará todo lo visual -->
+<body class="pagina-juego">
+
+  <!-- Contenedor principal del juego -->
+  <div id="juego">
+    
+    <!-- Fondo de supervivencia -->
+    <div class="fondo-supervivencia"></div>
+
+    <!-- HUD lateral izquierdo -->
+    <div id="hud-lateral">
+
+      <!-- Nombre del jugador -->
+      <div id="nombre-jugador" class="nombre-usuario">Jugador</div>
+
+      <!-- Barra de Vida -->
+      <div class="barra">
+        <label>❤️ Vida</label>
+        <div class="progreso">
+          <div class="relleno" id="vida-barra" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Barra de Energía -->
+      <div class="barra">
+        <label>⚡ Energía</label>
+        <div class="progreso">
+          <div class="relleno" id="energia-barra" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Barra de Agua -->
+      <div class="barra">
+        <label>💧 Agua</label>
+        <div class="progreso">
+          <div class="relleno" id="agua-barra" style="width: 100%;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Barra inferior del juego -->
+  <div id="barra-inferior">
+    <button class="boton-hud" id="btn-inventario">📦 Inventario</button>
+    <button class="boton-hud" id="btn-mapa">🗺️ Mapa</button>
+  </div>
+
+  <!-- Ventana flotante de inventario -->
+  <div id="ventana-inventario" >
+    <h2>🎒 Inventario</h2>
+    <ul id="lista-inventario">
+      <li>🌲 Madera x5</li>
+      <li>🪨 Piedra x3</li>
+      <li>🍎 Manzana x2</li>
+    </ul>
+    <button id="cerrar-inventario">Cerrar</button>
+  </div>
+
+  <!-- Ventana flotante de mapa -->
+  <div id="ventana-mapa">
+    <h2>🗺️ Mapa</h2>
+
+    <!-- Zona 1: Hogar -->
+    <div class="zona-mapa">
+      <div class="zona-header">
+        <h3>🏠 Hogar</h3>
+        <button class="btn-ir" data-zona="hogar">Ir al Hogar</button>
+      </div>
+    </div>
+
+    <!-- Zona 2: Bosque -->
+    <div class="zona-mapa">
+      <div class="zona-header">
+        <h3>🌲 Bosque</h3>
+        <button class="btn-ir" data-zona="bosque">Ir al Bosque</button>
+      </div>
+    </div>
+
+    <button id="cerrar-mapa">Cerrar</button>
+  </div>
+
+  <!-- Ventana del área Bosque -->
+  <div id="zona-bosque">
+    <h2>🌲 Bosque</h2>
+    <div class="contenedor-bosque">
+      <img src="imagenes/fondo_medio_dia.png" alt="Mapa del Bosque" class="img-mapa">
+      <div id="ventana-evento" class="ventana-evento oculto">
+        <p id="texto-evento">Aquí irá el mensaje</p>
+      </div>
+    </div>
+    <div class="botones-bosque">
+      <button id="btn-explorar-bosque">Explorar</button>
+      <button class="btn-cerrar-zona" data-zona="zona-bosque">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Enlace final al script principal del juego -->
+  <script src="js/juego.js"></script>
+  <script src="js/funciones.js"></script>
+
+</body>
+</html>
+
