@@ -1,0 +1,304 @@
+/* ==================================== */
+/* ESTILOS GLOBALES Y CONFIGURACIÓN BASE */
+/* ==================================== */
+
+html, body {
+  margin: 0; /* Quitamos márgenes por defecto */
+  padding: 0; /* Quitamos padding por defecto */
+  box-sizing: border-box; /* Padding incluido en ancho total */
+  font-family: Arial, sans-serif; /* Tipografía */
+  background-color: #4E342E; /* Fondo marrón */
+  height: 100vh; /* Altura 100% pantalla */
+}
+
+/* Ocultamos elementos por defecto */
+.ventana-oculta {
+  display: none !important; /* Ocultamos a la fuerza */
+}
+
+/* ===================================== */
+/* LOGIN Y REGISTRO (pantalla completa) */
+/* ===================================== */
+
+#pantalla-login, #registro-usuario {
+  position: fixed; /* Ocupa toda la pantalla */
+  top: 0; left: 0;
+  width: 100vw; height: 100vh; /* 100% del viewport */
+  display: flex; /* Centramos contenido */
+  flex-direction: column; /* En columna */
+  justify-content: center;
+  align-items: center;
+  color: white; /* Texto blanco */
+  text-shadow: 1px 1px 4px black; /* Sombra de texto */
+  background-image: url('../imagenes/fondo pagina principal.png'); /* Fondo decorativo */
+  background-size: cover; /* Que cubra todo */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 999; /* Al frente */
+}
+
+/* Título principal */
+#pantalla-login h1, #registro-usuario h2 {
+  font-size: 4vw; /* Tamaño relativo */
+  margin-bottom: 2vh; /* Separación inferior */
+}
+
+/* Formulario */
+#form-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh; /* Espacio entre campos */
+  width: 80%; /* Ancho relativo */
+  max-width: 400px; /* Máximo ancho */
+}
+
+/* Inputs */
+#form-registro input {
+  padding: 1vh;
+  border-radius: 0.5vw;
+  border: none;
+  font-size: 2.2vw;
+}
+
+/* Botón de enviar */
+#form-registro button {
+  padding: 1.5vh;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #6D7F4D;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+/* ===================================== */
+/* CONTENEDOR DEL JUEGO */
+/* ===================================== */
+
+#juego {
+  width: 100vw; /* 100% ancho pantalla */
+  height: 100vh; /* 100% alto pantalla */
+  position: relative;
+  overflow: hidden; /* No scroll interno */
+}
+
+/* Fondo texturizado */
+.fondo-supervivencia {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(#6D7F4D22 10%, transparent 11%) 0 0,
+    radial-gradient(#4E342E33 10%, transparent 11%) 8px 8px,
+    linear-gradient(90deg, #4E342E 20%, #6D7F4D 80%);
+  background-size: 16px 16px, 16px 16px, 100% 100%;
+  box-shadow: inset 0 0 5vh #00000055;
+}
+
+/* HUD lateral */
+#hud-lateral {
+  position: absolute;
+  top: 2vh;
+  left: 2vw;
+  width: 20vw;
+  padding: 2vh;
+  background-color: #3E2C24DD;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw #00000088;
+  color: white;
+  z-index: 10;
+  font-size: 1.5vw;
+}
+
+/* Nombre del jugador */
+.nombre-usuario {
+  font-size: 1.8vw;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* ============================== */
+/* BARRAS DE VIDA, ENERGÍA, AGUA */
+/* ============================== */
+
+.barra {
+  margin-bottom: 1vh;
+}
+
+.barra label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5vh;
+}
+
+.progreso {
+  background-color: #A69F8C;
+  border-radius: 1vw;
+  height: 2vh;
+  overflow: hidden;
+}
+
+.relleno {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+#vida-barra { background-color: #C62828; }
+#energia-barra { background-color: #FFD600; }
+#agua-barra { background-color: #03A9F4; }
+
+/* ===================================== */
+/* BOTONES INFERIORES DEL HUD            */
+/* ===================================== */
+
+#barra-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3E2C24DD;
+  padding: 1vh 0;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  z-index: 20;
+  box-shadow: 0 -0.5vh 1vh #00000088;
+}
+
+.boton-hud {
+  background-color: #6D7F4D;
+  color: white;
+  border: none;
+  padding: 1.5vh 3vw;
+  font-size: 1.6vw;
+  font-weight: bold;
+  border-radius: 1vw;
+  cursor: pointer;
+}
+
+.boton-hud:hover {
+  background-color: #879F6D;
+}
+
+/* ===================================== */
+/* MAPA / INVENTARIO / ZONAS             */
+/* ===================================== */
+
+#ventana-mapa, #ventana-inventario, #zona-bosque, #zona-hogar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3E2C24EE;
+  border: 0.4vw solid #6D7F4D;
+  border-radius: 1vw;
+  padding: 2vh 3vw;
+  width: 90vw;
+  max-width: 550px;
+  max-height: 85vh;
+  overflow: auto;
+  color: white;
+  text-align: center;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 0 2vh rgba(0, 0, 0, 0.6);
+}
+
+/* Zonas dentro del mapa */
+.zona-mapa {
+  background-color: #4E342E;
+  border: 0.3vw solid #6D7F4D;
+  border-radius: 1vw;
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+/* Encabezado de zona */
+.zona-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón "Ir allí" */
+.btn-ir {
+  background-color: #6D7F4D;
+  color: white;
+  border: none;
+  padding: 1vh 2vw;
+  border-radius: 0.6vw;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.btn-ir:hover {
+  background-color: #A3BF7D;
+}
+
+/* Imágenes dentro de zonas */
+.imagen-mapa, .img-mapa {
+  width: 100%;
+  height: 25vh;
+  background-color: #6D7F4D33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-style: italic;
+  border-radius: 1vw;
+  margin-bottom: 2vh;
+}
+
+/* Texto de eventos */
+#texto-evento {
+  font-size: 2vw;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  min-height: 4vh;
+}
+
+/* Botones generales de cerrar */
+#cerrar-inventario, #cerrar-mapa, .btn-cerrar-zona {
+  background-color: #C62828;
+  color: white;
+  border: none;
+  padding: 1.2vh 2.5vw;
+  border-radius: 0.8vw;
+  font-size: 1.6vw;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#cerrar-inventario:hover, #cerrar-mapa:hover, .btn-cerrar-zona:hover {
+  background-color: #e53935;
+}
+
+/* ===================================== */
+/* BOTÓN DE CERRAR SESIÓN                */
+/* ===================================== */
+
+.boton-cerrar-sesion {
+  position: fixed;
+  top: 2vh;
+  right: 2vw;
+  background-color: #C62828;
+  color: white;
+  border: none;
+  padding: 1vh 2vw;
+  border-radius: 1vw;
+  font-weight: bold;
+  font-size: 1.4vw;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+}
+
+/* Mostrar forzado */
+.ventana-visible {
+  display: block !important;
+}
