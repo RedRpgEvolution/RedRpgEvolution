@@ -17,6 +17,49 @@ html, body {
 }
 
 /* ===================================== */
+/* Declaracion de Fuentes Custom*/
+/* ===================================== */
+
+.skranji-regular {
+  font-family: "Skranji", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.skranji-bold {
+  font-family: "Skranji", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ===================================== */
+/* LOGIN Y REGISTRO*/
+/* ===================================== */
+.titulo-estilo{
+  font-family: "Skranji", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.btn-registro{
+  background: #CF9A32;
+  width: 40%;
+  height: 6%;
+  color: white;
+  font-family: "Skranji", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 120%;
+  box-shadow: 5px 5px 1px #282658;
+  margin-bottom: 20px;
+}
+
+.btn-registro:hover{
+  background: #216952;
+  box-shadow: 5px 5px 1px #691a1a;
+}
+
+/* ===================================== */
 /* LOGIN Y REGISTRO (pantalla completa) */
 /* ===================================== */
 
