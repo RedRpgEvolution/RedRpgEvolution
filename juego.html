@@ -204,35 +204,30 @@
     <button id="cerrar-mapa">Cerrar</button>
   </div>
 
-  <!-- Ventana del área Bosque -->
-<div id="zona-bosque">
-  <h2>Bosque</h2>
-
-  <!-- Ventana del área Bosque -->
+ <!-- Ventana del área Bosque -->
 <div id="zona-bosque" class="ventana-oculta">
   <h2>Bosque</h2>
 
-  <!-- 📦 Contenedor con imagen de fondo y sprite -->
+  <!-- 📦 Fondo + Sprite + Evento -->
   <div class="sprite-sobre-fondo">
-    <!-- 🖼 Imagen de fondo -->
+    <!-- 🌄 Fondo del bosque -->
     <img src="imagenes/fondo_medio_dia.png" alt="Mapa del Bosque" class="img-mapa">
 
-    <!-- 🧍 Sprite animado del personaje -->
+    <!-- 🧍‍♂️ Personaje animado -->
     <div id="personaje-prueba"></div>
+
+    <!-- 🗨️ Texto del evento -->
+    <div id="ventana-evento" class="ventana-evento ventana-oculta">
+      <p id="texto-evento">Comienza tu aventura</p>
+    </div>
   </div>
 
-  <!-- 💬 Texto del evento aparece debajo de la imagen y sobre los botones -->
-  <div id="ventana-evento" class="ventana-evento oculto">
-    <p id="texto-evento">Comienza tu aventura</p>
-  </div>
-
-  <!-- Botones inferiores -->
+  <!-- 🎮 Botones -->
   <div class="botones-bosque">
     <button class="boton-hud" id="btn-explorar-bosque">Explorar</button>
     <button class="btn-cerrar-zona" data-zona="zona-bosque">Cerrar</button>
   </div>
 </div>
-
 
 
 <!-- Ventana flotante de la zona Hogar -->

@@ -33,10 +33,6 @@ function actualizarHUD() {
   }
 }
 
-function btnlogin() {
-  window.location.href = "https://www.google.com";
-}
-
 // ==============================
 // EVENTOS DESPUÉS DE CARGA DEL DOM
 // ==============================
