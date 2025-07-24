@@ -2,28 +2,27 @@
 // ESTADÍSTICAS DEL JUGADOR
 // ==============================
 
-let vida = 100;      // Vida inicia en 100
-let energia = 100;   // Energía inicia en 100
-let agua = 100;      // Agua inicia en 100
+let vida = 100;
+let energia = 100;
+let agua = 100;
 
+let experiencia = 0;
+let experienciaMaxima = 100;
+let nivel = 1;
 
 // ==============================
 // ACTUALIZAR BARRAS EN HUD
 // ==============================
 
 function actualizarHUD() {
-  // Actualiza la anchura de las barras en pantalla según los valores actuales
   document.getElementById('vida-barra').style.width = `${vida}%`;
   document.getElementById('energia-barra').style.width = `${energia}%`;
   document.getElementById('agua-barra').style.width = `${agua}%`;
 
-  // 🟢 Actualizamos los textos visibles
   document.getElementById('vida-texto').textContent = `${vida} / 100`;
   document.getElementById('energia-texto').textContent = `${energia} / 100`;
   document.getElementById('agua-texto').textContent = `${agua} / 100`;
 
-
-  // Si no hay energía o agua, desactivamos el botón de explorar
   const btnExplorar = document.getElementById('btn-explorar-bosque');
   if (energia <= 0 || agua <= 0) {
     btnExplorar.disabled = true;
@@ -34,7 +33,6 @@ function actualizarHUD() {
   }
 }
 
-
 // ==============================
 // EVENTOS DESPUÉS DE CARGA DEL DOM
 // ==============================
@@ -42,128 +40,119 @@ function actualizarHUD() {
 document.addEventListener('DOMContentLoaded', () => {
   console.log("🔍 funciones.js está funcionando correctamente");
 
-  // ==============================
-// BOTÓN EXPLORAR BOSQUE
-// ==============================
+  const btnExplorar = document.getElementById('btn-explorar-bosque');
+  const ventanaEvento = document.getElementById('ventana-evento');
+  const textoEvento = document.getElementById('texto-evento');
+  const ventanaMapa = document.getElementById('ventana-mapa');
 
-// Obtener elementos del DOM
-const btnExplorar = document.getElementById('btn-explorar-bosque');
-const ventanaEvento = document.getElementById('ventana-evento');
-const textoEvento = document.getElementById('texto-evento');
+  let timeoutEvento;
+  let framePrueba = 0;
+  let animacionPrueba;
 
-// Variable para controlar el timeout activo
-let timeoutEvento; // ✅ Se usará para cancelar el anterior
+  function animarPrueba() {
+    const personaje = document.getElementById('personaje-prueba');
+    clearInterval(animacionPrueba);
 
-// Verificación de elementos y listener
-if (btnExplorar && ventanaEvento && textoEvento) {
-  btnExplorar.addEventListener('click', () => {
-    // Lista de eventos posibles
-    const eventos = [
-      "🌿 Encontraste una rama seca.",
-      "🐗 Un animal salvaje te asustó, perdiste energía.",
-      "🪨 Hallaste una piedra útil.",
-      "😐 No encontraste nada…",
-      "🍎 Descubriste un fruto comestible."
-    ];
+    animacionPrueba = setInterval(() => {
+      framePrueba = (framePrueba + 1) % 3;
+      const posX = framePrueba * 100 / 2;
+      personaje.style.backgroundPosition = `${posX}% 0%`;
+    }, 150);
 
-    // Elegir evento aleatorio
-    const evento = eventos[Math.floor(Math.random() * eventos.length)];
+    setTimeout(() => {
+      clearInterval(animacionPrueba);
+      personaje.style.backgroundPosition = `0% 0%`;
+    }, 1000);
+  }
 
-    // Modificar recursos
-    energia -= 1;
-    agua -= 2;
+  if (btnExplorar && ventanaEvento && textoEvento) {
+    btnExplorar.addEventListener('click', () => {
+      animarPrueba();
 
-    // Penalización adicional si el evento es peligroso
-    if (evento.includes("🐗")) energia -= 2;
+      const eventos = [
+        "🌿 Encontraste una rama seca.",
+        "🐗 Un animal salvaje te asustó, perdiste energía.",
+        "🪨 Hallaste una piedra útil.",
+        "😐 No encontraste nada…",
+        "🍎 Descubriste un fruto comestible."
+      ];
 
-    // Asegurar que no bajen de cero
-    energia = Math.max(0, energia);
-    agua = Math.max(0, agua);
+      const evento = eventos[Math.floor(Math.random() * eventos.length)];
 
-    // Mostrar evento en pantalla
-    textoEvento.textContent = evento;
-    ventanaEvento.classList.remove('ventana-oculta');
+      energia -= 1;
+      agua -= 2;
+      if (evento.includes("🐗")) energia -= 2;
 
-    // Actualizar la HUD
+      energia = Math.max(0, energia);
+      agua = Math.max(0, agua);
+
+      textoEvento.textContent = evento;
+      ventanaEvento.classList.remove('ventana-oculta');
+      ventanaEvento.classList.add('ventana-visible');
+
+      actualizarHUD();
+      ganarExperiencia(5);
+
+      clearTimeout(timeoutEvento);
+      timeoutEvento = setTimeout(() => {
+        ventanaEvento.classList.add('ventana-oculta');
+        ventanaEvento.classList.remove('ventana-visible');
+      }, 10000);
+    });
+
     actualizarHUD();
-
-    // ✅ Cancelar timeout anterior si existe
-    clearTimeout(timeoutEvento);
-
-    // ⏲ Iniciar nuevo timeout para ocultar después de 10 segundos
-    timeoutEvento = setTimeout(() => {
-      ventanaEvento.classList.add('ventana-oculta');
-    }, 10000);
-  });
-
-  // HUD inicial
-  actualizarHUD();
-}
-
-
-  // ==============================
-  // BOTÓN INVENTARIO
-  // ==============================
+  }
 
   const btnInventario = document.getElementById('btn-inventario');
   const ventanaInventario = document.getElementById('ventana-inventario');
   const btnCerrarInventario = document.getElementById('cerrar-inventario');
 
   btnInventario?.addEventListener('click', () => {
-    console.log("Abriendo inventario");
     ventanaInventario.classList.add('ventana-visible');
     ventanaInventario.classList.remove('ventana-oculta');
   });
 
   btnCerrarInventario?.addEventListener('click', () => {
-    console.log("Cerrando inventario");
     ventanaInventario.classList.remove('ventana-visible');
     ventanaInventario.classList.add('ventana-oculta');
   });
 
-  // ==============================
-  // BOTÓN MAPA
-  // ==============================
-
   const btnMapa = document.getElementById('btn-mapa');
-  const ventanaMapa = document.getElementById('ventana-mapa');
   const btnCerrarMapa = document.getElementById('cerrar-mapa');
 
   btnMapa?.addEventListener('click', () => {
-    console.log("🗌️ Mostrando mapa");
     ventanaMapa.classList.add('ventana-visible');
     ventanaMapa.classList.remove('ventana-oculta');
   });
 
   btnCerrarMapa?.addEventListener('click', () => {
-    console.log("Cerrando mapa");
     ventanaMapa.classList.remove('ventana-visible');
     ventanaMapa.classList.add('ventana-oculta');
   });
 
-  // ==============================
-  // BOTONES IR A ZONAS (Hogar / Bosque)
-  // ==============================
-
   document.querySelectorAll('.btn-ir').forEach(boton => {
-    boton.addEventListener('click', () => {
-      const destino = boton.dataset.zona;
+  boton.addEventListener('click', () => {
+    const destino = boton.dataset.zona;
+    console.log("🌲 Zona solicitada:", destino);
 
-      ventanaMapa.classList.add('ventana-oculta');
+    ventanaMapa.classList.add('ventana-oculta');
+    ventanaMapa.classList.remove('ventana-visible');
 
-      const zona = document.getElementById(destino);
-      if (zona) {
-        zona.classList.remove('ventana-oculta');
-        zona.style.display = 'block';
-      } else {
-        console.warn("⚠️ Zona no encontrada:", destino);
-      }
-    });
+    const zona = document.getElementById(destino);
+    if (zona) {
+      // 🧼 Asegura eliminar clases anteriores
+      zona.classList.remove('ventana-oculta');
+      zona.classList.remove('ventana-visible');
+
+      // ✅ Luego mostrar
+      zona.style.display = 'block'; // <-- adicional por si `ventana-oculta` dejó display: none
+      zona.classList.add('ventana-visible');
+    } else {
+      console.warn("⚠️ Zona no encontrada:", destino);
+    }
   });
+});
 
-  // ==============================
-  // BOTONES CIERRE DE ZONAS
-  // ==============================
 
   document.querySelectorAll('.btn-cerrar-zona').forEach(boton => {
     const idZona = boton.dataset.zona;
@@ -171,37 +160,25 @@ if (btnExplorar && ventanaEvento && textoEvento) {
       const zona = document.getElementById(idZona);
       if (zona) {
         zona.classList.add('ventana-oculta');
-        zona.style.display = 'none';
+        zona.classList.remove('ventana-visible');
       }
     });
   });
 });
 
-// ==============================
-// REGENERACIÓN DE ENERGÍA CADA 2 MINUTOS
-// ==============================
-
 setInterval(() => {
   if (energia < 100) {
     energia = Math.min(100, energia + 5);
-    console.log("Energía regenerada +5. Total:", energia);
     actualizarHUD();
   }
 }, 120000);
 
-let experiencia = 0;
-let experienciaMaxima = 100;
-
-// Llama esta función cuando ganes experiencia
 function ganarExperiencia(cantidad) {
   experiencia += cantidad;
-
-  // Si sube de nivel
   if (experiencia >= experienciaMaxima) {
     experiencia -= experienciaMaxima;
-    subirNivel(); // 💥 Nivel aumentado
+    subirNivel();
   }
-
   actualizarXP();
 }
 
@@ -212,9 +189,7 @@ function actualizarXP() {
 }
 
 function subirNivel() {
-  // Aquí tú defines qué pasa al subir de nivel
-  console.log("🎉 ¡Nivel aumentado!");
   nivel += 1;
-  experienciaMaxima += 50; // Puedes hacerlo progresivo
+  experienciaMaxima += 50;
   document.getElementById("nivel-jugador").textContent = "Nivel " + nivel;
 }

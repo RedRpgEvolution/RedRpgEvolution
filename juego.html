@@ -21,55 +21,61 @@
 
 <!-- Cuerpo de la página, donde se mostrará todo lo visual -->
 <body class="pagina-juego">
-  
+
   <!-- Barra de experiencia superior estilo pixel art -->
 <div id="barra-xp">
   <div id="xp-relleno"></div> <!-- Parte que se llena -->
   <span id="xp-texto">0 / 100 XP</span> <!-- Texto encima -->
 </div>
 
-
   <!-- Contenedor principal del juego -->
-  <div id="juego">
-    
-    <!-- Fondo de supervivencia -->
-    <div class="fondo-supervivencia"></div>
+<div id="juego">
 
-    <!-- HUD lateral izquierdo -->
-    <div id="hud-lateral">
+  <!-- Fondo de supervivencia -->
+  <div class="fondo-supervivencia"></div>
 
-      <!-- Nombre del jugador -->
-      <div id="nombre-jugador" class="nombre-usuario">Nombre de jugador</div>
+  <!-- HUD lateral izquierdo -->
+  <div id="hud-lateral">
 
-      <!-- Barra de Vida -->
-      <div class="barra">
-        <label>Vida</label>
-        <span id="vida-texto" class="barra-texto">100 / 100</span>  <!-- 🔢 Texto visible -->
-        <div class="progreso">
-          <div class="relleno" id="vida-barra" style="width: 100%;"></div>
-        </div>
-      </div>
-
-      <!-- Barra de Energía -->
-      <div class="barra">
-        <label>Energía</label>
-        <span id="energia-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
-        <div class="progreso">
-          <div class="relleno" id="energia-barra" style="width: 100%;"></div>
-        </div>
-      </div>
-
-      <!-- Barra de Agua -->
-      <div class="barra">
-        <label>Agua</label>
-        <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
-        <div class="progreso">
-          <div class="relleno" id="agua-barra" style="width: 100%;"></div>
-        </div>
-      </div>
-
+    <!-- Nombre del jugador -->
+    <div id="nombre-jugador" class="nombre-usuario">
+      Nombre de jugador
     </div>
+
+    <!-- Nivel del jugador -->
+    <div id="nivel-jugador" class="nivel-usuario">
+      Nivel 1
+    </div>
+
+    <!-- Barra de Vida -->
+    <div class="barra">
+      <label>Vida</label>
+      <span id="vida-texto" class="barra-texto">100 / 100</span>  <!-- 🔢 Texto visible -->
+      <div class="progreso">
+        <div class="relleno" id="vida-barra" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Barra de Energía -->
+    <div class="barra">
+      <label>Energía</label>
+      <span id="energia-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
+      <div class="progreso">
+        <div class="relleno" id="energia-barra" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Barra de Agua -->
+    <div class="barra">
+      <label>Agua</label>
+      <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
+      <div class="progreso">
+        <div class="relleno" id="agua-barra" style="width: 100%;"></div>
+      </div>
+    </div>
+
   </div>
+</div>
 
   <!-- Barra inferior del juego -->
   <div id="barra-inferior">
@@ -199,19 +205,35 @@
   </div>
 
   <!-- Ventana del área Bosque -->
-  <div id="zona-bosque">
-    <h2>Bosque</h2>
-    <div class="contenedor-bosque">
-      <img src="imagenes/fondo_medio_dia.png" alt="Mapa del Bosque" class="img-mapa">
-      <div id="ventana-evento" class="ventana-evento oculto">
-        <p id="texto-evento">Comienza tu aventura</p>
-      </div>
-    </div>
-    <div class="botones-bosque">
-      <button class="boton-hud" id="btn-explorar-bosque">Explorar</button>
-      <button class="btn-cerrar-zona" data-zona="zona-bosque">Cerrar</button>
-    </div>
+<div id="zona-bosque">
+  <h2>Bosque</h2>
+
+  <!-- Ventana del área Bosque -->
+<div id="zona-bosque" class="ventana-oculta">
+  <h2>Bosque</h2>
+
+  <!-- 📦 Contenedor con imagen de fondo y sprite -->
+  <div class="sprite-sobre-fondo">
+    <!-- 🖼 Imagen de fondo -->
+    <img src="imagenes/fondo_medio_dia.png" alt="Mapa del Bosque" class="img-mapa">
+
+    <!-- 🧍 Sprite animado del personaje -->
+    <div id="personaje-prueba"></div>
   </div>
+
+  <!-- 💬 Texto del evento aparece debajo de la imagen y sobre los botones -->
+  <div id="ventana-evento" class="ventana-evento oculto">
+    <p id="texto-evento">Comienza tu aventura</p>
+  </div>
+
+  <!-- Botones inferiores -->
+  <div class="botones-bosque">
+    <button class="boton-hud" id="btn-explorar-bosque">Explorar</button>
+    <button class="btn-cerrar-zona" data-zona="zona-bosque">Cerrar</button>
+  </div>
+</div>
+
+
 
 <!-- Ventana flotante de la zona Hogar -->
 <div id="zona-hogar" class="ventana-oculta">
