@@ -316,7 +316,7 @@ html, body {
   background-color: #3E2C24EE;
   border: 0.4vw solid #6D7F4D;
   border-radius: 1vw;
-  padding: 2vh 3vw;
+  padding: 1vh 1vw;
   width: 90vw;
   max-width: 550px;
   max-height: 85vh;
@@ -378,14 +378,16 @@ html, body {
 
 /* 📷 Imagen del fondo */
 .img-mapa {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1  ;
+  position: absolute;     /* 📍 Saca la imagen del flujo normal y permite superponerla */
+  top: 0;                 /* 📌 La alinea con la parte superior del contenedor padre */
+  left: 0;                /* 📌 La alinea con el borde izquierdo del contenedor */
+  width: 100%;            /* ↔️ Ocupa todo el ancho del contenedor */
+  height: 60vh;           /* ⬆ Usa el 40% de la altura de la ventana como alto */
+  max-height: 300px;      /* 🧱 Limita el alto máximo a 300px para no desbordarse */
+  object-fit: cover;      /* 🧩 La imagen se escala y recorta para llenar el área sin deformarse */
+  z-index: 1;             /* 🔽 Se coloca detrás de los elementos con z-index más alto */
 }
+
 
 /* Texto de eventos */
 #texto-evento {
@@ -398,7 +400,7 @@ html, body {
 /* Botones generales de cerrar */
 #cerrar-inventario, #cerrar-mapa, .btn-cerrar-zona {
   background-color: #C62828;
-  color: white;
+  color: white; 
   border: none;
   padding: 1.2vh 2.5vw;
   border-radius: 0.8vw;
@@ -439,28 +441,38 @@ html, body {
 
 /* 🎥 Contenedor fijo del fondo del bosque */
 .sprite-sobre-fondo {
-  position: relative;
-  width: 100%;
-  height: 40vw;
-  min-height: 200px;      /* 🧱 Garantiza altura mínima si vw falla */
-  overflow: hidden;
-  background-color: #264d28; /* 🟢 Fallback si no carga la imagen */
+  position: relative;      /* 🧭 Permite posicionar elementos hijos con position: absolute dentro de este contenedor */
+  width: 100%;             /* 📏 Ocupa todo el ancho disponible del elemento padre */
+  height: 40vw;            /* 📐 Altura relativa al ancho de la pantalla (viewport width) para diseño responsive */
+  min-height: 200px;       /* 🧱 Asegura que no sea demasiado pequeño en pantallas muy chicas */
+  overflow: hidden;        /* 🚫 Oculta cualquier parte de los hijos que se salga del área visible del contenedor */
 }
 
 
-/* 🧍 Sprite del personaje */
+
+/* 🧍 Sprite del personaje (desktop y tablets) */
 #personaje-prueba {
-  position: absolute;
-  width: 8%;
-  aspect-ratio: 1 / 2;
-  bottom: 20%;
-  left: 32%;
-  background-image: url('../sprites/personaje_prueba.png');
-  background-size: 300% 100%;
-  background-position: 0% 0%;
-  image-rendering: pixelated;
-  z-index: 5;
+  position: absolute;                    /* Se posiciona respecto al contenedor padre */
+  width: 10%;                            /* Ancho relativo (responsive) */
+  aspect-ratio: 1 / 2;                   /* Mantiene proporción 1:2 */
+  bottom: 15%;                           /* Altura desde el fondo */
+  left: 32%;                             /* Posición horizontal */
+  background-image: url('../sprites/personaje_prueba.png');  /* Sprite sheet */
+  background-size: 300% 100%;            /* 3 frames horizontales */
+  background-position: 0% 0%;            /* Primer frame */
+  image-rendering: pixelated;            /* Mantiene estilo pixel art */
+  z-index: 5;                            /* Sobre fondo, debajo del texto */
 }
+
+/* 📱 Ajustes para pantallas pequeñas (menos de 600px) */
+@media (max-width: 600px) {
+  #personaje-prueba {
+    width: 18%;                         /* Aumentamos el ancho para móviles */
+    bottom: 12%;                        /* Bajamos un poco el personaje */
+    left: 30%;                          /* Lo centramos mejor */
+  }
+}
+
 /* 🗨️ Texto del evento (fuera del fondo, pero antes de botones) */
 #ventana-evento {
   background-color: rgba(0, 0, 0, 0.7);
@@ -472,6 +484,8 @@ html, body {
   width: 90%;
   max-width: 600px;
   font-size: 1.1rem;
+  z-index: 20;                /* 🔝 Mayor que la imagen que está en z-index: 1 */
+  position: relative;         /* ✅ Necesario para que el z-index funcione */
 }
 
 #zona-bosque.ventana-visible {
@@ -480,3 +494,38 @@ html, body {
   visibility: visible !important;
   pointer-events: auto !important;
 }
+
+
+/* 🎮 Botones del área bosque, colocados debajo del fondo pero visibles arriba */
+.botones-bosque {
+  display: flex;              /* ➿ Coloca los botones uno al lado del otro */
+  justify-content: center;   /* 🧭 Centra horizontalmente */
+  gap: 2vw;                  /* ↔️ Espacio entre botones */
+  margin-top: -15vh;           /* 🆙 Separación superior (puedes bajarlo o subirlo aquí) */
+  z-index: 10;               /* 🥇 Encima del fondo (pero debajo de overlays si hay) */
+  position: relative;        /* 🧱 Necesario si usas z-index */
+}
+
+/* 🎮 Botón "Explorar" dentro del Bosque */
+#btn-explorar-bosque {
+  position: absolute;           /* Lo sacamos del flujo normal para posicionarlo */
+  bottom: 150%;                   /* Lo colocamos cerca de la parte inferior */
+  left: 30%;                    /* Centrado horizontalmente */
+  transform: translateX(-50%);  /* Corrige el centrado con base al ancho */
+  padding: 1vh 3vw;             /* Espaciado interno responsivo */
+  font-size: 1.8vw;             /* Tamaño de letra adaptable */
+  font-weight: bold;
+  background-color: #6D7F4D;    /* Color del juego */
+  color: white;
+  border: none;
+  border-radius: 1vw;
+  z-index: 10;                  /* Encima de la imagen del bosque */
+  cursor: pointer;
+  box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.4); /* Sombra para que destaque */
+  transition: background-color 0.3s ease;
+}
+
+#btn-explorar-bosque:hover {
+  background-color: #879F6D;
+}
+
