@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'WarcraftFont';
+  src: url('../fuentes/LifeCraft_Font.ttf') format('truetype');
+}
+
+
 /* ==================================== */
 /* ESTILOS GLOBALES Y CONFIGURACIÓN BASE */
 /* ==================================== */
@@ -5,9 +11,11 @@ html, body {
   margin: 0; /* Quitamos márgenes por defecto */
   padding: 0; /* Quitamos padding por defecto */
   box-sizing: border-box; /* Padding incluido en ancho total */
-  font-family: Arial, sans-serif; /* Tipografía */
+  font-family: "WarcraftFont", sans-serif; /* Tipografía */
   background-color: #4E342E; /* Fondo marrón */
   height: 100vh; /* Altura 100% pantalla */
+  overflow: auto;
+  overflow-x: hidden; /*No scroll horizontal*/
 }
 
 /* ===================================== */
@@ -32,7 +40,7 @@ html, body {
 #barra-xp {
   position: fixed;             /* Siempre arriba */
   top: 0; left: 0;
-  width: 100vw;                /* Ocupa todo el ancho de la pantalla */
+  width: 98.7vw;                /* Ocupa todo el ancho de la pantalla */
   height: 24px;                /* Altura estilo pixel */
   background-color: #1a1a1a;   /* Fondo oscuro tipo barra */
   border-bottom: 3px solid #282658; /* Línea pixel art */
@@ -46,7 +54,6 @@ html, body {
   text-shadow: 1px 1px #000;
   overflow: hidden;
 }
-
 #xp-relleno {
   position: absolute;
   top: 0; left: 0;
@@ -55,11 +62,10 @@ html, body {
   background: linear-gradient(to right, #cf9a32, #923a20); /* Color oro a rojo */
   transition: width 0.5s ease;
 }
-
 #xp-texto {
   position: relative;
   z-index: 1;
-  font-weight: bold;
+  font-family: "Warcraftfont";
 }
 
 
@@ -67,17 +73,17 @@ html, body {
 /* CLASE REUTILIZABLE PARA OCULTAR VENTANAS */
 /* ======================================== */
 .ventana-oculta {
-  display: none !important;   /* 🔥 Oculta el elemento de forma total, sobrescribiendo cualquier estilo */
-  opacity: 0;                 /* 🔁 También lo hace invisible visualmente si hubiera animaciones */
-  pointer-events: none;      /* 🚫 Desactiva clics e interacciones en el área */
-  visibility: hidden;        /* 👁️ Lo hace invisible para el navegador */
+  display: none !important;   /*  Oculta el elemento de forma total, sobrescribiendo cualquier estilo */
+  opacity: 0;                 /*  También lo hace invisible visualmente si hubiera animaciones */
+  pointer-events: none;      /*  Desactiva clics e interacciones en el área */
+  visibility: hidden;        /*  Lo hace invisible para el navegador */
 }
 
 /* ===================== */
 /* Fondo exclusivo para JUEGO */
 /* ===================== */
 .pagina-juego {
-  background-image: url('../imagenes/fondo_bosque2.png'); /* Fondo específico */
+  background-image: url('../imagenes/fondo-de-piso-de-madera.jpg'); /* Fondo específico */
   background-size: cover;             /* Cubre toda la pantalla */
   background-position: center;        /* Centrado */
   background-repeat: no-repeat;       /* Sin repetición */
@@ -104,7 +110,7 @@ html, body {
   background-position: center center; /* Centrado tanto horizontal como vertical */
   background-repeat: no-repeat;       /* No se repite la imagen */
   background-attachment: fixed;       /* Fija la imagen al hacer scroll */
-  width: 100vw;                       /* Ocupa todo el ancho de la ventana */
+  width: 100%;                       /* Ocupa todo el ancho de la ventana */
   height: 100vh;                      /* Ocupa toda la altura de la ventana */
   display: flex;                      /* Permite centrar contenido con Flexbox */
   justify-content: center;           /* Centrado horizontal */
@@ -197,10 +203,9 @@ html, body {
 /* CONTENEDOR DEL JUEGO */
 /* ===================================== */
 #juego {
-  width: 100vw; /* 100% ancho pantalla */
+  width: 100%; /* 100% ancho pantalla */
   height: 100vh; /* 100% alto pantalla */
   position: relative;
-  overflow: hidden; /* No scroll interno */
 }
 
 /* ===================================== */
@@ -224,7 +229,7 @@ html, body {
   font-size: 1.3vw;
 }
 .nombre-usuario {
-  font-size: 1.3vw;         /* Establece el tamaño del texto en función del ancho de la ventana del navegador. Esto permite que el texto sea responsive y se ajuste al tamaño de la pantalla. */
+  font-size: 1.8vw;         /* Establece el tamaño del texto en función del ancho de la ventana del navegador. Esto permite que el texto sea responsive y se ajuste al tamaño de la pantalla. */
   font-weight: bold;        /* Hace que el texto aparezca en negrita, para que destaque visualmente como un título o elemento importante. */
   margin-bottom: 1vh;       /* Agrega un espacio vertical debajo del nombre del jugador equivalente al 1% de la altura de la ventana. Esto separa el nombre de los elementos que están debajo (por ejemplo, el nivel o las barras de vida). */
   text-shadow: 1px 1px 2px #000;  /* Aplica una sombra al texto. La sombra se desplaza 1 píxel a la derecha y 1 píxel hacia abajo, con un desenfoque de 2 píxeles, usando un color negro. Esto mejora la legibilidad del texto sobre fondos oscuros o con texturas. */
@@ -238,7 +243,7 @@ html, body {
   text-align: center;    /* ⬅ Centrado igual que el nombre */
   margin-bottom: 4%;     /* ⬅ Separación inferior relativa */
   position: absolute;    /*Para mover hay que agregar posición absoluta*/
-  top: 12%;
+  top: 15%;
   left: 10%;
 }
 /* vida, energía, agua */
@@ -259,37 +264,48 @@ html, body {
   display: inline-block;
 }
 
+/* ===================================== */
+/* PANEL RUTAS (JUEGO.PHP)*/
+/* ===================================== */
 
+.hud-rutas{
+  position: relative; /* Importante: para que los hijos con position absolute se posicionen respecto a este div */
+  top: 51vh;
+  left: 0vw;
+  width: 25vw;
+  height: 25vw; /*Modifica lo alto de la imagen backgroud*/
+  background-image: url('../imagenes/hud_lateral.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vw #00000088;
+  color: white;
+  z-index: 10;
+  font-size: 1.3vw;
 
-
+}
 
 /* ===================================== */
 /* BOTONES INFERIORES DEL HUD            */
 /* ===================================== */
-#barra-inferior {
-  position: fixed;
-  bottom: 0;
-  left:   0;
-  width: 100%;
-  padding: 1vh 0;
-  display: flex;
-  justify-content: center;
-  gap: 3vw;
-  z-index: 20;
-  box-shadow: 0 -0.5vh 1vh #00000088;
-}
+
 .boton-hud {
-  background-color: #6D7F4D;
+  background-image: url('../imagenes/Boton_madera.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
   color: white;
-  border: none;
-  padding: 1.5vh 3vw;
-  font-size: 1.6vw;
-  font-weight: bold;
-  border-radius: 1vw;
+  padding: 1vh 2vw;
   cursor: pointer;
+  width: 15vw;
+  height: 6vw;
+  font-size: 1.2vw;
+  border: none;
 }
 .boton-hud:hover {
-  background-color: #879F6D;
+  background-color: #e5fb6b;
 }
 
 /* ===================================== */

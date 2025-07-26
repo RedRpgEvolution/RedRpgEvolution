@@ -22,7 +22,7 @@
 <!-- Cuerpo de la página, donde se mostrará todo lo visual -->
 <body class="pagina-juego">
 
-  <!-- Barra de experiencia superior estilo pixel art -->
+  <!-- Barra de experiencia superior -->
 <div id="barra-xp">
   <div id="xp-relleno"></div> <!-- Parte que se llena -->
   <span id="xp-texto">0 / 100 XP</span> <!-- Texto encima -->
@@ -31,12 +31,9 @@
   <!-- Contenedor principal del juego -->
 <div id="juego">
 
-  <!-- Fondo de supervivencia -->
-  <div class="fondo-supervivencia"></div>
-
   <!-- HUD lateral izquierdo en pagina juego.php -->
   <div id="hud-estadisticas-jugador">
-  <div>
+    <div>
     <!-- Nombre del jugador -->
     <div id="nombre-jugador" class="nombre-usuario">
       Nombre de jugador
@@ -73,19 +70,38 @@
         <div class="relleno" id="agua-barra" style="width: 100%;"></div>
       </div>
     </div>
-   </div>
+    </div>
   </div>
-</div>
 
 
 
+  <!-- HUD lateral izquierdo inferior en pagina juego.php -->
+  <div id="rutas" class="hud-rutas">
+    <div>
+      <!-- Barra inferior del juego -->
+      <div>
+        <button class="boton-hud" id="btn-inventario">Inventario</button>
+        <button class="boton-hud" id="btn-mapa">Mapa</button>
+        <button class="boton-hud" id="btn-conocimiento">Conocimiento</button>
+      </div>
 
-  <!-- Barra inferior del juego -->
-  <div id="barra-inferior">
-    <button class="boton-hud" id="btn-inventario">Inventario</button>
-    <button class="boton-hud" id="btn-mapa">Mapa</button>
-    <button class="boton-hud" id="btn-conocimiento">Conocimiento</button>
+    </div>
+    
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   <!-- Ventana flotante de inventario -->
 <div id="ventana-inventario" class="ventana-oculta">
