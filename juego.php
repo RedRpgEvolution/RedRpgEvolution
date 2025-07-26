@@ -34,9 +34,9 @@
   <!-- Fondo de supervivencia -->
   <div class="fondo-supervivencia"></div>
 
-  <!-- HUD lateral izquierdo -->
-  <div id="hud-lateral">
-
+  <!-- HUD lateral izquierdo en pagina juego.php -->
+  <div id="hud-estadisticas-jugador">
+  <div>
     <!-- Nombre del jugador -->
     <div id="nombre-jugador" class="nombre-usuario">
       Nombre de jugador
@@ -44,8 +44,8 @@
 
     <!-- Nivel del jugador -->
     <div id="nivel-jugador" class="nivel-usuario">
-      Nivel 1
-    </div>
+      Nivel 1 
+    <div class="contenedor-estadisticas">
 
     <!-- Barra de Vida -->
     <div class="barra">
@@ -73,9 +73,12 @@
         <div class="relleno" id="agua-barra" style="width: 100%;"></div>
       </div>
     </div>
-
+   </div>
   </div>
 </div>
+
+
+
 
   <!-- Barra inferior del juego -->
   <div id="barra-inferior">

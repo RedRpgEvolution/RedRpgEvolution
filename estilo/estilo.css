@@ -126,7 +126,7 @@ html, body {
 }
 
 /* ========================================= */
-/* BARRA SUPERIOR INDEX CON RESPONSIVE FIXED */
+/* BARRA SUPERIOR INDEX CON RESPONSIVE FIXED (INDEX.PHP)*/
 /* ========================================= */
 .barra-superior {
   position: fixed;                     /* 🔒 Fija la barra en la parte superior */
@@ -203,75 +203,65 @@ html, body {
   overflow: hidden; /* No scroll interno */
 }
 
-/* HUD lateral */
-#hud-lateral {
-  position: absolute;
+/* ===================================== */
+/* PANEL ESTADISTICAS DE JUGADOR (JUEGO.PHP)*/
+/* ===================================== */
+
+#hud-estadisticas-jugador {
+  position: relative; /* Importante: para que los hijos con position absolute se posicionen respecto a este div */
   top: 5vh;
   left: 2vw;
-  width: 20vw;
-  padding: 2vh;
-  background-color: #3E2C24DD;
-  border-radius: 1vw;
+  width: 25vw;
+  height: 25vw; /*Modifica lo alto de la imagen backgroud*/
+  background-image: url('../imagenes/hud_lateral.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0.5vw;
   box-shadow: 0 0 1vw #00000088;
   color: white;
   z-index: 10;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
 }
-
-/* Nombre del jugador */
 .nombre-usuario {
-  font-size: 1.8vw;
-  font-weight: bold;
-  margin-bottom: 1vh;
-  text-shadow: 1px 1px 2px #000;
+  font-size: 1.3vw;         /* Establece el tamaño del texto en función del ancho de la ventana del navegador. Esto permite que el texto sea responsive y se ajuste al tamaño de la pantalla. */
+  font-weight: bold;        /* Hace que el texto aparezca en negrita, para que destaque visualmente como un título o elemento importante. */
+  margin-bottom: 1vh;       /* Agrega un espacio vertical debajo del nombre del jugador equivalente al 1% de la altura de la ventana. Esto separa el nombre de los elementos que están debajo (por ejemplo, el nivel o las barras de vida). */
+  text-shadow: 1px 1px 2px #000;  /* Aplica una sombra al texto. La sombra se desplaza 1 píxel a la derecha y 1 píxel hacia abajo, con un desenfoque de 2 píxeles, usando un color negro. Esto mejora la legibilidad del texto sobre fondos oscuros o con texturas. */
+  position: absolute;       /*Para mover hay que agregar posición absoluta*/
+  top: 6%;
+  left: 10%;
 }
-
-/* 🎮 Estilo para el nivel del jugador debajo del nombre */
 .nivel-usuario {
   font-size: 90%;        /* ⬅ Tamaño relativo del texto */
   color: #ccc;           /* ⬅ Color gris claro para diferenciar */
   text-align: center;    /* ⬅ Centrado igual que el nombre */
   margin-bottom: 4%;     /* ⬅ Separación inferior relativa */
+  position: absolute;    /*Para mover hay que agregar posición absoluta*/
+  top: 12%;
+  left: 10%;
 }
-
-/* ============================== */
-/* BARRAS DE VIDA, ENERGÍA, AGUA */
-/* ============================== */
-.barra {
-  margin-bottom: 1vh;
+/* vida, energía, agua */
+.contenedor-estadisticas {
+  position: absolute;      /* Permite mover todo el bloque libremente */
+  top: 200%;                /* Distancia desde arriba */
+  left: 10%;               /* Distancia desde la izquierda */
+  width: 80%;              /* Ancho del grupo de estadísticas */
+  z-index: 20;             /* Encima del fondo pero debajo del HUD si es necesario */
 }
-
-.barra label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5vh;
-}
-
-/* Texto con valor numérico encima de cada barra (vida, energía, agua) */
+/* Estilo común del texto encima de cada barra */
 .barra-texto {
-  font-size: 14px;           /* Tamaño adecuado */
-  font-weight: bold;         /* Resalta el número */
-  color: white;              /* Texto blanco */
-  text-shadow: 1px 1px 2px black; /* Sombra para legibilidad */
-  margin-bottom: 4px;        /* Separación con la barra */
-  display: inline-block;     /* En línea con espaciado */
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin-bottom: 4px;
+  display: inline-block;
 }
 
-.progreso {
-  background-color: #A69F8C;
-  border-radius: 1vw;
-  height: 2vh;
-  overflow: hidden;
-}
 
-.relleno {
-  height: 100%;
-  transition: width 0.3s ease;
-}
 
-#vida-barra { background-color: #C62828; }
-#energia-barra { background-color: #FFD600; }
-#agua-barra { background-color: #03A9F4; }
+
 
 /* ===================================== */
 /* BOTONES INFERIORES DEL HUD            */
@@ -279,7 +269,7 @@ html, body {
 #barra-inferior {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left:   0;
   width: 100%;
   padding: 1vh 0;
   display: flex;
@@ -288,7 +278,6 @@ html, body {
   z-index: 20;
   box-shadow: 0 -0.5vh 1vh #00000088;
 }
-
 .boton-hud {
   background-color: #6D7F4D;
   color: white;
@@ -299,7 +288,6 @@ html, body {
   border-radius: 1vw;
   cursor: pointer;
 }
-
 .boton-hud:hover {
   background-color: #879F6D;
 }
