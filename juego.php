@@ -1,6 +1,4 @@
-<!-- Declaramos el tipo de documento HTML -->
 <!DOCTYPE html>
-<!-- Iniciamos el documento HTML y definimos el idioma -->
 <html lang="es">
 
 <!-- Sección de cabecera, donde van los metadatos -->
@@ -12,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Título de la pestaña del navegador -->
-  <title>Juego de Supervivencia</title>
+  <title>Red Evo</title>
 
   <!-- Enlace al archivo de estilos CSS -->
   <link rel="stylesheet" href="estilo/estilo.css">
@@ -20,75 +18,76 @@
 </head>
 
 <!-- Cuerpo de la página, donde se mostrará todo lo visual -->
-<body class="pagina-juego">
+<body>
 
-  <!-- Barra de experiencia superior -->
-<div id="barra-xp">
-  <div id="xp-relleno"></div> <!-- Parte que se llena -->
-  <span id="xp-texto">0 / 100 XP</span> <!-- Texto encima -->
-</div>
-
-  <!-- Contenedor principal del juego -->
-<div id="juego">
-
-  <!-- HUD lateral izquierdo en pagina juego.php -->
-  <div id="hud-estadisticas-jugador">
-    <div>
-    <!-- Nombre del jugador -->
-    <div id="nombre-jugador" class="nombre-usuario">
-      Nombre de jugador
-    </div>
-
-    <!-- Nivel del jugador -->
-    <div id="nivel-jugador" class="nivel-usuario">
-      Nivel 1 
-    <div class="contenedor-estadisticas">
-
-    <!-- Barra de Vida -->
-    <div class="barra">
-      <label>Vida</label>
-      <span id="vida-texto" class="barra-texto">100 / 100</span>  <!-- 🔢 Texto visible -->
-      <div class="progreso">
-        <div class="relleno" id="vida-barra" style="width: 100%;"></div>
-      </div>
-    </div>
-
-    <!-- Barra de Energía -->
-    <div class="barra">
-      <label>Energía</label>
-      <span id="energia-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
-      <div class="progreso">
-        <div class="relleno" id="energia-barra" style="width: 100%;"></div>
-      </div>
-    </div>
-
-    <!-- Barra de Agua -->
-    <div class="barra">
-      <label>Agua</label>
-      <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
-      <div class="progreso">
-        <div class="relleno" id="agua-barra" style="width: 100%;"></div>
-      </div>
-    </div>
-    </div>
+    <!-- Barra de experiencia superior -->
+  <div id="barra-xp">
+    <div id="xp-relleno"></div> <!-- Parte que se llena -->
+    <span id="xp-texto">0 / 100 XP</span> <!-- Texto encima -->
   </div>
 
 
+    <!-- Contenedor principal del juego -->
+  <div id="juego">
 
-  <!-- HUD lateral izquierdo inferior en pagina juego.php -->
-  <div id="rutas" class="hud-rutas">
-    <div>
-      <!-- Barra inferior del juego -->
+    <!-- HUD lateral izquierdo en pagina (vida, energia y agua)estilo.css -->
+    <div id="hud-estadisticas-jugador">
       <div>
-        <button class="boton-hud" id="btn-inventario">Inventario</button>
-        <button class="boton-hud" id="btn-mapa">Mapa</button>
-        <button class="boton-hud" id="btn-conocimiento">Conocimiento</button>
+      <!-- Nombre del jugador -->
+      <div id="nombre-jugador" class="nombre-usuario">
+        Nombre de jugador
       </div>
 
+      <!-- Nivel del jugador -->
+      <div id="nivel-jugador" class="nivel-usuario">
+        Nivel 1 
+      </div>
+      <div class="contenedor-estadisticas">
+
+        <!-- Barra de Vida -->
+        <div>
+          <label>Vida</label>
+          <span id="vida-texto" class="barra-texto">100 / 100</span>  <!-- 🔢 Texto visible -->
+          <div class="progreso">
+            <div class="relleno" id="vida-barra"> 
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Energía -->
+        <div>
+          <label>Energía</label>
+          <span id="energia-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
+          <div class="progreso">
+          </div>
+            <div class="relleno" id="energia-barra" style="width: 100%;">
+            </div>
+        </div>
+      </div>
+
+      <!-- Barra de Agua -->
+      <div>
+        <label>Agua</label>
+        <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
+        <div class="progreso">
+          <div class="relleno" id="agua-barra" style="width: 100%;"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- HUD lateral izquierdo en pagina (inventario, mapa y conocimiento) estilo.css -->
+    <div id="rutas" class="hud-rutas">
+      <div>
+        <div>
+          <button class="boton-hud" id="btn-inventario">Inventario</button>
+          <button class="boton-hud" id="btn-mapa">Mapa</button>
+          <button class="boton-hud" id="btn-conocimiento">Conocimiento</button>
+        </div>
+      </div>    
     </div>
     
-  </div>
-
+    <div id="ventana-resultado" class="estilo-ventana-resultado">
+    </div>
 
 
 
@@ -196,7 +195,6 @@
   </div>
   <!-- Botón cerrar inventario -->
 <button id="cerrar-inventario" class="btn-cerrar-inv">✖ Cerrar</button>
-
 </div>
 
 
