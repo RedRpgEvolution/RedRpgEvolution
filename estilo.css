@@ -12,10 +12,18 @@ html, body {
   padding: 0; /* Quitamos padding por defecto */
   box-sizing: border-box; /* Padding incluido en ancho total */
   font-family: "WarcraftFont", sans-serif; /* Tipografía */
-  background-color: #4E342E; /* Fondo marrón */
   height: 100vh; /* Altura 100% pantalla */
   overflow: auto;
   overflow-x: hidden; /*No scroll horizontal*/
+  
+  background-image: url('../imagenes/fondo-de-piso-de-madera.jpg'); /* Fondo específico */
+  background-size: cover;             /* Cubre toda la pantalla */
+  background-position: center;        /* Centrado */
+  background-repeat: no-repeat;       /* Sin repetición */
+  background-attachment: fixed;       /* Fijo mientras se hace scroll */
+  position: relative;
+
+
 }
 
 /* ===================================== */
@@ -79,16 +87,6 @@ html, body {
   visibility: hidden;        /*  Lo hace invisible para el navegador */
 }
 
-/* ===================== */
-/* Fondo exclusivo para JUEGO */
-/* ===================== */
-.pagina-juego {
-  background-image: url('../imagenes/fondo-de-piso-de-madera.jpg'); /* Fondo específico */
-  background-size: cover;             /* Cubre toda la pantalla */
-  background-position: center;        /* Centrado */
-  background-repeat: no-repeat;       /* Sin repetición */
-  background-attachment: fixed;       /* Fijo mientras se hace scroll */
-}
 
 /* ===================== */
 /* Fondo exclusivo para LOGIN */
@@ -249,7 +247,7 @@ html, body {
 /* vida, energía, agua */
 .contenedor-estadisticas {
   position: absolute;      /* Permite mover todo el bloque libremente */
-  top: 200%;                /* Distancia desde arriba */
+  top: 50%;                /* Distancia desde arriba */
   left: 10%;               /* Distancia desde la izquierda */
   width: 80%;              /* Ancho del grupo de estadísticas */
   z-index: 20;             /* Encima del fondo pero debajo del HUD si es necesario */
@@ -270,8 +268,8 @@ html, body {
 
 .hud-rutas{
   position: relative; /* Importante: para que los hijos con position absolute se posicionen respecto a este div */
-  top: 51vh;
-  left: 0vw;
+  top: 52vh;
+  left: 0.5%;
   width: 25vw;
   height: 25vw; /*Modifica lo alto de la imagen backgroud*/
   background-image: url('../imagenes/hud_lateral.png');
@@ -286,9 +284,9 @@ html, body {
 
 }
 
-/* ===================================== */
-/* BOTONES INFERIORES DEL HUD            */
-/* ===================================== */
+/* ========================================================= */
+/* BOTONES LATERAL IZQUIERO (INVENTARIO, MAPA Y CONOCIMEINTO */
+/* ==========================================================*/
 
 .boton-hud {
   background-image: url('../imagenes/Boton_madera.png');
@@ -297,33 +295,20 @@ html, body {
   background-position: center;
   background-color: transparent;
   color: white;
-  padding: 0;
+  padding: 1;
   cursor: pointer;
-  width: 56%;
+  width: 50%;
+  top: 5vh;
   height: auto;
   left: 22%;
   font-size: 1.2vw;
   border: none;
   margin-bottom: 2%;
-  margin: 3vh auto;
+  margin: 0;
   font-family: 'WarcraftFont';
   position: relative;
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 4 / 1.5;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ===================================== */
 /* MAPA / INVENTARIO / ZONAS             */
@@ -549,4 +534,41 @@ html, body {
 #btn-explorar-bosque:hover {
   background-color: #879F6D;
 }
+
+#ventana-resultado {
+  /* 📌 Ubicar en la parte superior derecha */
+  position: absolute;
+  top: 10vh;            /* Espacio desde arriba */
+  right: 0vw;           /* Espacio desde el borde derecho */
+
+  /* 📐 Tamaño escalable */
+  width: 30vw;          /* Ancho adaptativo */
+  height: 30vh;         /* Alto adaptativo */
+
+  /* 🖼 Fondo */
+  background-image: url('../imagenes/marco.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+   background-color: rgba(255, 0, 0, 0.3); /* 🔴 Para pruebas */
+
+  padding: 2vh 2vw;     /* Espaciado interno razonable */
+  box-sizing: border-box;
+
+  z-index: 100;         /* Asegura que quede visible */
+  border: 1px solid red;
+
+}
+
+/* 📱 Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  #ventana-resultado {
+    width: 80vw;       /* Casi todo el ancho en móviles */
+    height: auto;      /* Que crezca según contenido */
+    top: 5vh;
+    right: 5vw;
+    padding: 4vh 4vw;
+  }
+}
+
 

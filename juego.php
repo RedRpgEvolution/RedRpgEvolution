@@ -20,7 +20,7 @@
 <!-- Cuerpo de la página, donde se mostrará todo lo visual -->
 <body>
 
-    <!-- Barra de experiencia superior -->
+  <!-- Barra de experiencia superior -->
   <div id="barra-xp">
     <div id="xp-relleno"></div> <!-- Parte que se llena -->
     <span id="xp-texto">0 / 100 XP</span> <!-- Texto encima -->
@@ -36,12 +36,16 @@
       <!-- Nombre del jugador -->
       <div id="nombre-jugador" class="nombre-usuario">
         Nombre de jugador
-      </div>
-
+      </div>     
       <!-- Nivel del jugador -->
       <div id="nivel-jugador" class="nivel-usuario">
         Nivel 1 
       </div>
+
+
+
+
+
       <div class="contenedor-estadisticas">
 
         <!-- Barra de Vida -->
@@ -63,18 +67,22 @@
             <div class="relleno" id="energia-barra" style="width: 100%;">
             </div>
         </div>
-      </div>
 
-      <!-- Barra de Agua -->
-      <div>
-        <label>Agua</label>
-        <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
-        <div class="progreso">
-          <div class="relleno" id="agua-barra" style="width: 100%;"></div>
+        <!-- Barra de Agua -->
+        <div>
+          <label>Agua</label>
+          <span id="agua-texto" class="barra-texto">100 / 100</span> <!-- 🔢 Texto visible -->
+          <div class="progreso">
+            <div class="relleno" id="agua-barra" style="width: 100%;">             
+            </div>
+          </div>
         </div>
       </div>
-      </div>
     </div>
+
+
+
+
     <!-- HUD lateral izquierdo en pagina (inventario, mapa y conocimiento) estilo.css -->
     <div id="rutas" class="hud-rutas">
       <div>
@@ -92,110 +100,102 @@
 
 
 
-
-
-
-
-
-
-
-
   
 
-  <!-- Ventana flotante de inventario -->
-<div id="ventana-inventario" class="ventana-oculta">
-  <h2>INVENTARIO</h2>
-  <div class="grid-inventario">
+    <!-- Ventana flotante de inventario -->
+  <div id="ventana-inventario" class="ventana-oculta">
+    <h2>INVENTARIO</h2>
+    <div class="grid-inventario">
 
-    <!-- 🔓 Primer slot desbloqueado -->
-    <div class="item-inventario desbloqueado">
-      <img src="iconos/tronco_madera.png" alt="tronco">
-      <span class="item-cantidad">1</span>
-    </div>
+      <!-- 🔓 Primer slot desbloqueado -->
+      <div class="item-inventario desbloqueado">
+        <img src="iconos/tronco_madera.png" alt="tronco">
+        <span class="item-cantidad">1</span>
+      </div>
 
-    <!-- 🔓 Segundo slot desbloqueado -->
-    <div class="item-inventario desbloqueado">
-      <img src="iconos/roca.png" alt="roca">
-      <span class="item-cantidad">3</span>
-    </div>
+      <!-- 🔓 Segundo slot desbloqueado -->
+      <div class="item-inventario desbloqueado">
+        <img src="iconos/roca.png" alt="roca">
+        <span class="item-cantidad">3</span>
+      </div>
 
-    <!-- 🔒 Slots bloqueados son 18 bloqueados -->
-  
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
+      <!-- 🔒 Slots bloqueados son 18 bloqueados -->
     
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
 
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
 
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
+      
+      <div class="item-inventario bloqueado">
+        <img src="iconos/candado_pixel.png" alt="Bloqueado">
+      </div>
     </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
-    
-    <div class="item-inventario bloqueado">
-      <img src="iconos/candado_pixel.png" alt="Bloqueado">
-    </div>
+    <!-- Botón cerrar inventario -->
+  <button id="cerrar-inventario" class="btn-cerrar-inv">✖ Cerrar</button>
   </div>
-  <!-- Botón cerrar inventario -->
-<button id="cerrar-inventario" class="btn-cerrar-inv">✖ Cerrar</button>
-</div>
 
 
   <!-- Ventana flotante de mapa -->
