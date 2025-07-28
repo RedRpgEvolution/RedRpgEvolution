@@ -9,13 +9,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap" rel="stylesheet">
 	<title>Red Rpg Evolution</title>
 	<center>
-		
-		<div id="pantalla-login" style="display: flex;">
-
-    	<h1 class="titulo-estilo">🌲 RED RPG EVOLUTION</h1>
-    	<button class="btn-registro" id="btn-login-simulacion">Iniciar con Google</button>
-
-  		</div>
+		<form action="js/guardar.php" method="POST">
+		<br>
+			<input type="text" id="bd_usuario" name="bd_usuario" placeholder="USUARIO"><br><br>
+			<input type="text" id="bd_correo" name="bd_correo" placeholder="CORREO ELECTRONICO"><br><br>
+			<input type="text" id="bd_password" name="bd_password" placeholder="CONTRASEÑA"><br><br>
+			<input type="text" id="bd_password2" name="bd_password2" placeholder="RE-CONTRASEÑA"><br><br>
+			<input type="text" id="bd_genero" name="bd_genero" placeholder="GENERO"><br><br>
+			<input type="submit" name="btn-guardar" id="btn-guardar" value="GUARDAR">
+		</form>
 
 	</center>
 </head>
