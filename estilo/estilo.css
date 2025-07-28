@@ -247,7 +247,7 @@ html, body {
 /* vida, energía, agua */
 .contenedor-estadisticas {
   position: absolute;      /* Permite mover todo el bloque libremente */
-  top: 200%;                /* Distancia desde arriba */
+  top: 50%;                /* Distancia desde arriba */
   left: 10%;               /* Distancia desde la izquierda */
   width: 80%;              /* Ancho del grupo de estadísticas */
   z-index: 20;             /* Encima del fondo pero debajo del HUD si es necesario */
@@ -268,8 +268,8 @@ html, body {
 
 .hud-rutas{
   position: relative; /* Importante: para que los hijos con position absolute se posicionen respecto a este div */
-  top: 8vh;
-  left: 2%;
+  top: 52vh;
+  left: 0.5%;
   width: 25vw;
   height: 25vw; /*Modifica lo alto de la imagen backgroud*/
   background-image: url('../imagenes/hud_lateral.png');
