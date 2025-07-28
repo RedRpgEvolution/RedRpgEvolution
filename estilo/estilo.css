@@ -160,10 +160,11 @@ html, body {
 
 /* Estilo del logo */
 .logo {
-  font-size: 2vw;                      /* 🔠 Escalado con la pantalla */
-  font-weight: bold;
+  font-family: WarcraftFont;
+  font-size: 80px;
+  -webkit-text-stroke: 1px black;
   color: white;
-  text-shadow: 1px 1px 2px black;
+  text-shadow:5px 5px 5px crimson;
 }
 
 /* Botón "Iniciar sesión" */
@@ -247,7 +248,7 @@ html, body {
 /* vida, energía, agua */
 .contenedor-estadisticas {
   position: absolute;      /* Permite mover todo el bloque libremente */
-  top: 50%;                /* Distancia desde arriba */
+  top: 200%;                /* Distancia desde arriba */
   left: 10%;               /* Distancia desde la izquierda */
   width: 80%;              /* Ancho del grupo de estadísticas */
   z-index: 20;             /* Encima del fondo pero debajo del HUD si es necesario */
@@ -268,8 +269,8 @@ html, body {
 
 .hud-rutas{
   position: relative; /* Importante: para que los hijos con position absolute se posicionen respecto a este div */
-  top: 52vh;
-  left: 0.5%;
+  top: 8vh;
+  left: 2%;
   width: 25vw;
   height: 25vw; /*Modifica lo alto de la imagen backgroud*/
   background-image: url('../imagenes/hud_lateral.png');
@@ -570,5 +571,3 @@ html, body {
     padding: 4vh 4vw;
   }
 }
-
-

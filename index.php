@@ -18,7 +18,7 @@
       <div class="logo">RED RPG EVOLUTION</div>
 
       <!-- Botón de iniciar sesión alineado a la derecha -->
-      <a style="text-decoration: none;" href="login.php" class="btn-login">Iniciar sesión</a>
+      <a style="text-decoration: none;" href="login.php" class="btn-login">🔑 Iniciar sesión</a>
     </div>
   </header>
 
