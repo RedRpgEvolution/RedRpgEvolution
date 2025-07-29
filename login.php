@@ -23,6 +23,8 @@
 		</header>
 
 		<article class="ArticuloRegistro">
+			<?php include "js/sesiones.php"; ?>
+			<?php include "js/connect.php"; ?>
 			<div id="cont_registro" class="cont_login">
 				<form action="js/guardar.php" method="POST">
 				<br>
@@ -36,18 +38,18 @@
 					  <option value="HOMBRE">HOMBRE</option>
 					  <option value="MUJER">MUJER</option>
 					  <option value="PREFIERO NO DECIRLO">PREFIERO NO DECIRLO</option>
-					</select>
+					</select><br><br>
 					<input class="btn-reg" type="submit" name="btn-guardar" id="btn-guardar" value="REGISTRARME"><br><br>					
 				</form>
 				<button class="btn-reg" onclick="ocultarRegistro()">LOGIN</button>
 			</div>
 
 			<div id="cont_login" class="cont_login">
-				<form action="" method="POST">
+				<form action="js/sesiones.php" method="POST">
 				<br>
 					<label class="LabelReg">L O G I N</label><br><br>
-					<input class="box-reg" type="text" id="Log_usuario" name="Log_usuario" placeholder="USUARIO"><br><br>
-					<input class="box-reg" type="text" id="Log_password" name="Log_password" placeholder="CONTRASEÑA"><br><br>
+					<input class="box-reg" type="text" id="bd_usuario" name="bd_usuario" placeholder="USUARIO"><br><br>
+					<input class="box-reg" type="text" id="bd_password" name="bd_password" placeholder="CONTRASEÑA"><br><br>
 					<input class="btn-reg" type="submit" name="btn-Log" id="btn-Log" value="👥 INICIAR SESION"><br><br>					
 				</form>
 				<button class="btn-reg" onclick="ocultarLogin()">🖋️ REGISTRARME</button>

@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+
+  if(empty($_SESSION["id"])){
+    header("location: login.php");
+  }
+
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,11 +45,12 @@
       <div id="hud-estadisticas-jugador">
         <div>
           <!-- Nombre del jugador -->
-          <div id="nombre-jugador" class="nombre-usuario">Nombre de jugador
+          <div id="nombre-jugador" class="nombre-usuario"> aquui <?php  echo $_SESSION["user"]; ?>
           </div>     
           <!-- Nivel del jugador -->
           <div id="nivel-jugador" class="nivel-usuario">Nivel 1 
           </div>
+          <a href="js/session_destroy.php">CERRAR SESION</a>
         </div>  
       
 
